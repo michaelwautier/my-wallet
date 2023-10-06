@@ -104,6 +104,9 @@ Style/DirEmpty: # new in 1.48
   Enabled: true
 Style/DocumentDynamicEvalDefinition: # new in 1.1
   Enabled: true
+Style/Documentation:
+  Exclude:
+    - 'app/models/**/*.rb'
 Style/EmptyHeredoc: # new in 1.32
   Enabled: true
 Style/EndlessMethod: # new in 1.8
