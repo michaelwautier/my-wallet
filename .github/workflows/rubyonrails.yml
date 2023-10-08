@@ -4,8 +4,10 @@
 #
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
-name: "Ruby on Rails CI"
+name: Ruby on Rails CI
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ '*', '*/*' ]
     types: [ opened, synchronize, reopened, ready_for_review ]
@@ -18,8 +20,8 @@ jobs:
         ports:
           - "5432:5432"
         env:
-          POSTGRES_DB: rails_test
-          POSTGRES_USER: rails
+          POSTGRES_DB: my_wallet_test
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
@@ -39,7 +41,7 @@ jobs:
       - name: Run tests
         run: bundle exec rspec
 
-  Lint:
+  Brakeman-Rubocop:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
