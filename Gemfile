@@ -43,11 +43,11 @@ group :development, :test do
   gem 'brakeman'
   gem 'debug', platforms: %i[mri windows]
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'rspec-rails'
 end
 
 group :development do
