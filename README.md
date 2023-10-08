@@ -1,24 +1,15 @@
-# README
+# My Wallet API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 3.2.2
+* Rails version: 7.1
 
-Things you may want to cover:
+## Authentication
 
-* Ruby version
+Authentication is done using Devise and Devise-JWT.
 
-* System dependencies
+[This tutorial](https://sdrmike.medium.com/rails-7-api-only-app-with-devise-and-jwt-for-authentication-1397211fb97c) was
+used to set up authentication
 
-* Configuration
+## Serialization
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Serialization is done using jsonapi-serializer
