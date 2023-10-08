@@ -18,7 +18,7 @@ module Users
       render_unauthorized_response and return if authorization_header.blank?
 
       jwt_payload = JWT.decode(authorization_header.split.last,
-                               Rails.application.credentials.devise_jwt_secret_key!).first
+                               Rails.application.credentials.devise_jwt_secret_key).first
       current_user = User.find_by(id: jwt_payload['sub'], jti: jwt_payload['jti'])
 
       if current_user
