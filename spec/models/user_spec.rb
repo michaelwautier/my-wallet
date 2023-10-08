@@ -1,30 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  let(:user) { build(:user) }
+  subject(:user) { described_class.new(attributes) }
+
   let(:attributes) { attributes_for(:user) }
 
-  it 'is valid with valid attributes' do
-    expect(described_class.new(attributes)).to be_valid
+  context 'with valid attributes' do
+    it { is_expected.to be_valid }
   end
 
-  it 'is not valid without an email' do
-    user.email = nil
-    expect(user).not_to be_valid
-  end
+  context 'with invalid attributes' do
+    context 'without email' do
+      it 'is not valid' do
+        user.email = nil
+        expect(user).not_to be_valid
+      end
+    end
 
-  it 'is not valid without a password' do
-    user.password = nil
-    expect(user).not_to be_valid
-  end
+    context 'without password' do
+      it 'is not valid' do
+        user.password = nil
+        expect(user).not_to be_valid
+      end
+    end
 
-  it 'is not valid without a first_name' do
-    user.first_name = nil
-    expect(user).not_to be_valid
-  end
+    context 'without first_name' do
+      it 'is not valid' do
+        user.first_name = nil
+        expect(user).not_to be_valid
+      end
+    end
 
-  it 'is not valid without a last_name' do
-    user.last_name = nil
-    expect(user).not_to be_valid
+    context 'without last_name' do
+      it 'is not valid' do
+        user.last_name = nil
+        expect(user).not_to be_valid
+      end
+    end
   end
 end
