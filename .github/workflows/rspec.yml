@@ -8,9 +8,7 @@ on:
     - cron: '20 3 * * 2'
 
 env:
-  RAILS_ENV: test
-  RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-  SECRET_DEVISE_JWT_SECRET_KEY: ${{ secrets.SECRET_DEVISE_JWT_SECRET_KEY }}
+  DEVISE_JWT_SECRET_KEY: ${{ secrets.devise_jwt_secret_key }}
 
 jobs:
   run-rspec:
