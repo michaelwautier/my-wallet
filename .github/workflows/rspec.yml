@@ -16,6 +16,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: my_wallet_test
+
     steps:
       - uses: actions/checkout@v3
 
