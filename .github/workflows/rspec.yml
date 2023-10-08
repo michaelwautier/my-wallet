@@ -33,6 +33,11 @@ jobs:
           # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
 
-      - name: Run tests
+      - name: Setup Database
+        run: |
+          bin/rails db:setup
+          bin/rails db:migrate
+
+      - name: Run RSpec
         run: |
           bundle exec rspec
