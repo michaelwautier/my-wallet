@@ -116,6 +116,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -267,6 +269,8 @@ GEM
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     stringio (3.0.8)
     thor (1.2.2)
     timeout (0.4.0)
@@ -298,6 +302,7 @@ DEPENDENCIES
   devise
   devise-jwt
   factory_bot_rails
+  faker
   jsonapi-serializer
   pg (~> 1.1)
   puma (>= 5.0)
@@ -308,6 +313,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  shoulda-matchers
   tzinfo-data
 
 RUBY VERSION
