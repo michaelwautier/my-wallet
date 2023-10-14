@@ -11,18 +11,16 @@ RSpec.describe '/signin' do
   before { create(:user, user_attributes) }
 
   context 'with valid params' do
+    before { request }
+
     it { is_expected.to eq 200 }
 
     it 'returns the user' do
-      request
       user_data = json.dig(:data, :user)
       expect(user_data.slice(*attributes_to_check)).to eq user_attributes.slice(*attributes_to_check)
     end
 
-    it 'returns success message' do
-      request
-      expect(json[:message]).to eq 'Logged in successfully'
-    end
+    it { expect(json[:message]).to eq 'Logged in successfully' }
   end
 
   context 'with invalid params' do
