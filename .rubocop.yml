@@ -7,3 +7,6 @@ AllCops:
 Style/Documentation:
   Exclude:
     - 'app/models/**/*.rb'
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'

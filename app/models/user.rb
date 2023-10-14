@@ -9,4 +9,11 @@ class User < ApplicationRecord
          :jwt_authenticatable, jwt_revocation_strategy: self
 
   validates :first_name, :last_name, presence: true
+
+  has_many :accounts, dependent: :destroy
+  has_many :financial_transactions, through: :accounts
+
+  def full_name
+    "#{first_name} #{last_name}".strip
+  end
 end

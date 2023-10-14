@@ -3,41 +3,25 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  subject(:user) { described_class.new(attributes) }
-
-  let(:attributes) { attributes_for(:user) }
-
-  context 'with valid attributes' do
-    it { is_expected.to be_valid }
+  describe 'associations' do
+    it { is_expected.to have_many(:accounts).dependent(:destroy) }
+    it { is_expected.to have_many(:financial_transactions).through(:accounts) }
   end
 
-  context 'with invalid attributes' do
-    context 'without email' do
-      it 'is not valid' do
-        user.email = nil
-        expect(user).not_to be_valid
-      end
-    end
+  describe 'validation' do
+    it { is_expected.to validate_presence_of(:first_name) }
+    it { is_expected.to validate_presence_of(:last_name) }
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_presence_of(:password) }
+  end
 
-    context 'without password' do
-      it 'is not valid' do
-        user.password = nil
-        expect(user).not_to be_valid
-      end
-    end
+  describe '#full_name' do
+    subject(:user) { described_class.new(attributes) }
 
-    context 'without first_name' do
-      it 'is not valid' do
-        user.first_name = nil
-        expect(user).not_to be_valid
-      end
-    end
+    let(:attributes) { attributes_for(:user) }
 
-    context 'without last_name' do
-      it 'is not valid' do
-        user.last_name = nil
-        expect(user).not_to be_valid
-      end
+    it 'returns the full name' do
+      expect(user.full_name).to eq("#{attributes[:first_name]} #{attributes[:last_name]}".strip)
     end
   end
 end
